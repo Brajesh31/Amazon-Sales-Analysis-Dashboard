@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+.idea/workspace.xml
+.vscode/
+*.log
+*.tmp
+~$*.xlsx
+*.bak
