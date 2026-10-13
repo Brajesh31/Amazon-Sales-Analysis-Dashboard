@@ -1,0 +1,10 @@
+* text=auto
+*.md text eol=lf
+*.sql text eol=lf
+*.pbix binary
+*.xlsx binary
+*.xls binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
