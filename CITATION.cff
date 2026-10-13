@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: "Amazon Sales Analysis Dashboard"
+message: "If you use this dashboard project, please cite the repository and its author."
+type: software
+authors:
+  - family-names: Kumar
+    given-names: Brajesh
+    affiliation: "Independent developer"
+repository-code: "https://github.com/Brajesh31/Amazon-Sales-Analysis-Dashboard"
+license: MIT
+keywords:
+  - power-bi
+  - sql
+  - data-analysis
+  - sales-dashboard
