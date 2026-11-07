@@ -44,4 +44,4 @@ See [`docs/database.md`](./docs/database.md), [`docs/development.md`](./docs/dev
 
 Repository documentation and project-authored material are released under the MIT License. Third-party data, logos, images, and trademarks remain subject to their own terms. See [`LICENSE`](./LICENSE).
 
-Last updated: 2026-11-07 01:41 UTC
+Last updated: 2026-11-07 08:27 UTC
