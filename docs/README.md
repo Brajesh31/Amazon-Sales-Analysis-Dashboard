@@ -11,6 +11,7 @@ This directory provides operational and analytical documentation for the Amazon 
 | [Architecture](architecture.md) | Source artifacts and report/data flow |
 | [Development](development.md) | Safe changes to the PBIX, data, and SQL |
 | [Release Process](release-process.md) | Validation and release checklist |
+| [Glossary](glossary.md) | Power BI and data terminology |
 
 ## Data and SQL
 
@@ -31,6 +32,7 @@ This directory provides operational and analytical documentation for the Amazon 
 | [Testing](testing.md) | Manual report, refresh, and data validation |
 | [Deployment](deployment.md) | Workspace publishing and controlled sharing |
 | [Security](security.md) | Confidentiality, access, and safe handling |
+| [Asset Licensing](asset-licensing.md) | Dataset, trademark, and image rights |
 | [Asset Licensing](asset-licensing.md) | Source-data, logo, font, and image rights |
 | [API](api.md) | Confirms that no HTTP API is included |
 | [Glossary](glossary.md) | Business intelligence and data terms |
