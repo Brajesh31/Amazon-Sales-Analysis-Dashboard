@@ -1,9 +1,45 @@
+# Environment and credentials
 .env
 .env.*
 !.env.example
-.idea/workspace.xml
-.vscode/
-*.log
-*.tmp
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Power BI / Office temporary and lock files
 ~$*.xlsx
+~$*.xlsm
+~$*.pbix
+*.tmp
 *.bak
+*.log
+
+# Local exports and working output
+output/
+exports/
+temp/
+tmp/
+
+# IDE / OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Credential/cache folders
+.cache/
+secrets/
