@@ -1,0 +1,78 @@
+name: Repository and Documentation Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate artifacts and documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required project artifacts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          required = [
+              "README.md",
+              "LICENSE",
+              "Amazon.pbix",
+              "Amazon.pdf",
+              "Amazon_Combined_Data.csv",
+              "Amazon_Combined_Data.xlsx",
+              "Amazon Database.sql",
+              "docs/README.md",
+              "docs/data-dictionary.md",
+              "docs/data-lineage.md",
+              "docs/data-quality.md",
+          ]
+          missing = [name for name in required if not Path(name).is_file()]
+          if missing:
+              raise SystemExit("Missing required artifacts: " + ", ".join(missing))
+          for name in required:
+              if Path(name).stat().st_size == 0:
+                  raise SystemExit(f"Required artifact is empty: {name}")
+          print(f"Validated {len(required)} required artifacts.")
+          PY
+
+      - name: Validate documentation links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+          from urllib.parse import unquote, urlsplit
+
+          markdown_files = [Path("README.md"), *Path("docs").rglob("*.md")]
+          link_pattern = re.compile(r"!?(?:\[[^\]]*\])\(([^)]+)\)")
+          errors = []
+
+          for markdown_file in markdown_files:
+              content = markdown_file.read_text(encoding="utf-8")
+              for raw_target in link_pattern.findall(content):
+                  target = raw_target.strip().split()[0].strip("<>")
+                  parsed = urlsplit(target)
+                  if parsed.scheme or parsed.netloc or target.startswith("#"):
+                      continue
+                  path_part = unquote(parsed.path)
+                  if not path_part:
+                      continue
+                  resolved = (markdown_file.parent / path_part).resolve()
+                  if not resolved.exists():
+                      errors.append(f"{markdown_file}: missing {target}")
+
+          if errors:
+              print("\n".join(errors))
+              sys.exit(1)
+          print(f"Validated relative links in {len(markdown_files)} Markdown files.")
+          PY
